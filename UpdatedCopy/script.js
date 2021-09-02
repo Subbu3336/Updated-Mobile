@@ -15,8 +15,6 @@ class corousel {
   }
   setInitialClasses(){
      if(this.corouselItem.length > 1){
-      console.log(this.corouselItem[this.totalItems - 1]);
-
       this.corouselItem[this.totalItems - 1].classList.add("prev");
       this.corouselItem[0].classList.add("active");
       this.corouselItem[1].classList.add("next");
@@ -76,11 +74,28 @@ handleTouchStart(evt) {
     for (let i = 0; i < this.totalItems; i++) {
         let node = document.createElement("span");
         if(i == 0){
-            node.className ="active"
+            node.className ="active gifActive";
+            let childNode = document.createElement("span");
+            node.appendChild(childNode);
         }
         node.dataset.number=i+1;
         this.corouselParent.getElementsByClassName("line-container")[0].appendChild(node);
     }
+        let progressValue = 20;
+        const progressBar = document.querySelector(".gifActive span");
+
+        progressBar.style.width = `${progressValue}%`;
+
+        const timer = setInterval(() => {
+          if (progressValue < 100) {
+            progressValue += 10;
+            progressBar.style.width = `${progressValue}%`;
+          
+          }
+          if (progressValue === 100) {
+            clearInterval(timer);
+          }
+        }, 500);
   }
   sliderEvents(){
     if(this.totalItems > 1){
@@ -101,7 +116,7 @@ handleTouchStart(evt) {
 
 
  moveCarouselTo(slideValue) {
-    
+
     if(slideValue || slideValue == 0){
       this.slide = slideValue;
     }
@@ -112,17 +127,54 @@ handleTouchStart(evt) {
       let activeDot = this.corouselParent.querySelector(".line-container span:nth-child("+(this.slide+1)+")");
       let preActiveDot = this.corouselParent.querySelector(".line-container span.active");
       preActiveDot.classList.remove("active");
-      activeDot.className="active";
+      
+      if(this.slide == 0){
+        activeDot.className="active gifActive";
+        let progressValue = 0;
+        const progressBar = document.querySelector(".gifActive span");
+
+        progressBar.style.width = `${progressValue}%`;
+
+        const timer = setInterval(() => {
+          if (progressValue < 100) {
+            progressValue += 10;
+            progressBar.style.width = `${progressValue}%`;
+          
+          }
+          if (progressValue === 100) {
+            clearInterval(timer);
+          }
+        }, 500);
+      }else{
+        activeDot.className="active";
+      }
 
       let activeDotText = this.corouselParent.querySelector(".slideText p:nth-child("+(this.slide+1)+")");
       let preActiveDotText = this.corouselParent.querySelector(".slideText p.active");
       preActiveDotText.classList.remove("active");
       activeDotText.className="active";
+        
 
       let activeDotTextTab = this.corouselParent.parentElement.querySelector(".line-container-tab p:nth-child("+(this.slide+1)+")");
       let preActiveDotTextTab = this.corouselParent.parentElement.querySelector(".line-container-tab p.active");
       preActiveDotTextTab.classList.remove("active");
       activeDotTextTab.className="active";
+
+        let progVerValue = 10;
+        let progressBarVert = document.querySelector("p.active .gifActive span");
+        if(progressBarVert){
+            progressBarVert.style.height = `${progVerValue}%`;
+            var timerVer = setInterval(() => {
+            if (progVerValue < 100) {
+              progVerValue += 10;
+              progressBarVert.style.height = `${progVerValue}%`;
+            
+            }
+            if (progVerValue === 100) {
+              clearInterval(timerVer);
+            }
+          }, 500);  
+        }
 
 
 

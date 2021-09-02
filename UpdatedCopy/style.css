@@ -97,7 +97,9 @@ body{
     margin: 0px 20px;
 }
 
-.dotsContent span{ 
+/* New Change comment it */
+
+/*.dotsContent span{ 
   height: 3px;
   width: 40px;
   background-color: #ffffff;
@@ -110,7 +112,7 @@ body{
 
 .dotsContent span.active{
     background-color: #000000;
-}
+}*/
 
 .line-container{
   text-align: center;  
@@ -134,6 +136,15 @@ body{
   margin: 0px 30px;
  }
 
+ .header-desktop-content{
+   padding: 0px 25px;
+   display:  none;
+ }
+
+
+ .header-desktop-content h3{
+   margin-top: 0px;
+ }
 
 @media (max-width:767px) {
     .middle--block {
@@ -304,14 +315,32 @@ body{
 
 @media (min-width:  768px) and (max-width: 1079px ){
    .scrollDownload > div{
-    width: 100%;
+    width: 80%;
   }
 
 }
 
+@media (min-width:  1080px) {
+  .header-desktop-content {
+      display: block;
+  }
+  .header{
+    position: absolute;
+    margin-left: 30%;
+    width: calc(100% - 30%);
+    text-align: left;
+  }
+  .header h3,.header p{
+    text-align: left;
+  }
+  .dataContainer{
+    margin-top: 120px;
+  }
+}
+
 @media (min-width:  1080px) and (max-width:  1399px){
   .scrollDownload {
-      flex-direction: row;
+      flex-direction: column;
   }
 }
 
@@ -319,5 +348,118 @@ body{
   .scrollDownload {
       flex-direction: row;
   }
+  .download-buttons {
+    display: flex;
+    flex-direction: column;
+ }
+
+}
+
+
+
+/* New Changes */
+
+.dotsContent{
+  width: 100%;
+}
+
+.dotsContent .line-container > span{ 
+  height: 4px;
+  width: calc(33.33% - 10px);
+  background-color: #ffffff;
+  display: inline-block;
+  margin:  0px 5px;
+  border: 1px solid #000000;
+  cursor:  pointer;
+  margin-top: 5px;
+}
+
+.scrollDownload span.imageIcon{
+  height: 40px;
+  width: 3px;
+  background-color: #ffffff;
+  display: inline-block;
+  margin: 0px 5px;
+  border: 1px solid #000000;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+
+.dotsContent span.active.gifActive span{ 
+    height: 4px;
+    width: 30%;
+    display: flex;
+    background: black;
+}
+
+.dotsContent span.active.gifActive,.scrollDownload span.gifActive{
+    background-color: white;
+    border: none;
+}
+
+.dotsContent span.active{
+    background-color: #000000;
+}
+
+.line-container-tab p.active span.imageIcon.gifActive{
+    background-color: white;
+  }
+
+.scrollDownload span.imageIcon{
+  height:  60px;
+}
+
+.imageText {
+    padding-top: 15px;
+}
+
+.scrollDownload .line-container-tab p.active span.gifActive span{
+    height: 10px;
+    width: 4px;
+    display: flex;
+    background: black;
+}
+
+
+@media (min-width:  768px) and (max-width: 1079px ){
+   .scrollDownload > div{
+    width: 80%;
+  }
+
+}
+
+@media (min-width:  1080px) {
+  .header-desktop-content {
+      display: block;
+  }
+  .header{
+    position: absolute;
+    margin-left: 30%;
+    width: calc(100% - 30%);
+    text-align: left;
+  }
+  .header h3,.header p{
+    text-align: left;
+  }
+  .dataContainer{
+    margin-top: 120px;
+  }
+}
+
+@media (min-width:  1080px) and (max-width:  1399px){
+  .scrollDownload {
+      flex-direction: column;
+  }
+}
+
+@media (min-width:  1400px){
+  .scrollDownload {
+      flex-direction: row;
+  }
+  .download-buttons {
+    display: flex;
+    flex-direction: column;
+ }
 
 }
