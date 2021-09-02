@@ -96,6 +96,22 @@ handleTouchStart(evt) {
             clearInterval(timer);
           }
         }, 500);
+
+        let progVerValue = 10;
+        let progressBarVert = document.querySelector("p.active .gifActive span");
+        if(progressBarVert){
+            progressBarVert.style.height = `${progVerValue}%`;
+            let timerVer = setInterval(() => {
+            if (progVerValue < 100) {
+              progVerValue += 10;
+              progressBarVert.style.height = `${progVerValue}%`;
+            
+            }
+            if (progVerValue === 100 || this.slide > 0) {
+              clearInterval(timerVer);
+            }
+          }, 500);  
+        }
   }
   sliderEvents(){
     if(this.totalItems > 1){
@@ -136,12 +152,12 @@ handleTouchStart(evt) {
         progressBar.style.width = `${progressValue}%`;
 
         const timer = setInterval(() => {
-          if (progressValue < 100) {
+          if (progressValue < 100 ) {
             progressValue += 10;
             progressBar.style.width = `${progressValue}%`;
           
           }
-          if (progressValue === 100) {
+          if (progressValue === 100 || this.slide > 0) {
             clearInterval(timer);
           }
         }, 500);
@@ -164,13 +180,13 @@ handleTouchStart(evt) {
         let progressBarVert = document.querySelector("p.active .gifActive span");
         if(progressBarVert){
             progressBarVert.style.height = `${progVerValue}%`;
-            var timerVer = setInterval(() => {
+            let timerVer = setInterval(() => {
             if (progVerValue < 100) {
               progVerValue += 10;
               progressBarVert.style.height = `${progVerValue}%`;
             
             }
-            if (progVerValue === 100) {
+            if (progVerValue === 100 || this.slide > 0) {
               clearInterval(timerVer);
             }
           }, 500);  
